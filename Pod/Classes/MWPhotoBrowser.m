@@ -178,6 +178,9 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     if (self.displayActionButton) {
         _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
     }
+    else if (self.displayDeleteButton) {
+        _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteButtonPressed:)];
+    }
     
     // Update
     [self reloadData];
@@ -1601,6 +1604,12 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 
     }
     
+}
+
+- (void) deleteButtonPressed: (id) sender {
+    if ([self.customDelegate respondsToSelector:@selector(photoBrowser:deleteButtonPressedForPhotoAtIndex:)]) {
+        [self.customDelegate photoBrowser:self deleteButtonPressedForPhotoAtIndex:_currentPageIndex];
+    }
 }
 
 #pragma mark - Action Progress
