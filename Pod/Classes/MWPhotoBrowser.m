@@ -178,7 +178,8 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     if (self.displayActionButton) {
         _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
     }
-    else if (self.displayDeleteButton) {
+    
+    if (self.displayDeleteButton) {
         _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteButtonPressed:)];
     }
     
